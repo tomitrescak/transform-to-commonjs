@@ -2,7 +2,7 @@
 
 Node 6 supports almost whole ES 6 specification but there is not support for ES6 imports :/
 
-This plugin transforms your ES6 imports to commonjs counterparts.
+This plugin transforms your ES6 *imports / exports to commonjs* counterparts.
 **NO BABEL, No sourcemapping is needed**.
 
 **The output is in ES6**.
@@ -14,10 +14,21 @@ EXAMPLE:
 ```js
 import Foo, { Foo1 } from 'Bar';
 
-to
+export function m() {}
+export const n();
+export default function () {}
+
+// to
 
 const Foo = require('Bar').default;
 const { Foo1 } = require('Bar');
+
+function m() {}
+const n;
+function defaultFunction() {}
+
+exports.m = m;
+exports.default = defaultFunction;
 ```
 
 # How to use
