@@ -1,0 +1,20 @@
+{
+  "name": "import-to-commonjs",
+  "version": "0.0.2",
+  "description": "Transforms import statements to commonjs",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "NodeJs",
+    "ES6",
+    "CommonJS",
+    "Javascript"
+  ],
+  "author": "Tomi Trescak",
+  "license": "MIT",
+  "devDependencies": {
+    "assert": "^1.4.1"
+  }
+}

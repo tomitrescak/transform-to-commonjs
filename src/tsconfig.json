@@ -1,0 +1,26 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "declaration": false,
+    "noImplicitAny": true,
+    "removeComments": true,
+    "noLib": false,
+    "preserveConstEnums": true,
+    "outDir": "../dist",
+    "suppressImplicitAnyIndexErrors": true,
+    "experimentalDecorators": true,
+    "sourceMap": false,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "classic",
+    "allowJs": true,
+    "strictNullChecks": false
+  },
+  "filesGlob": [
+    "**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
