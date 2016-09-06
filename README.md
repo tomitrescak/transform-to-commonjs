@@ -28,6 +28,7 @@ const n;
 function defaultFunction() {}
 
 exports.m = m;
+exports.n = n;
 exports.default = defaultFunction;
 ```
 
