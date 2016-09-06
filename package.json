@@ -4,7 +4,11 @@
   "description": "Transforms import statements to commonjs",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Tests are setup for Wallaby.JS\" && exit 1",
+    "build": "tsc -p ./src"
+  },
+  "repository": {
+    "url": "https://github.com/tomitrescak/transform-to-commonjs"
   },
   "keywords": [
     "NodeJs",
@@ -13,8 +17,5 @@
     "Javascript"
   ],
   "author": "Tomi Trescak",
-  "license": "MIT",
-  "devDependencies": {
-    "assert": "^1.4.1"
-  }
+  "license": "MIT"
 }
