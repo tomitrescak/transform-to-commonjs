@@ -1,5 +1,5 @@
-const importReg = /^import\s*((\* as )?\s*([\w_]+)\s*)?,?\s*(\{\s*([\w_,\s]*)\s\})?\s*(from\s+)?(['"][\._\-\w\/]+['"])/gm;
-const exportRef = /^export\s*(default)?\s*(const|let|var|class|function|interface)?\s*([\w_]*)/mg;
+const importReg = /^import\s+((\* as )?\s*([\w_]+)\s*)?,?\s*(\{\s*([\w_,\s]*)\s\})?\s*(from\s+)?(['"][\._\-\w\/]+['"])/gm;
+const exportRef = /^export\s+(default)?\s*(const|let|var|class|function|interface)?\s*([\w_]*)/mg;
 
 export default function transform(source: string) {
   importReg.lastIndex = 0;
@@ -90,6 +90,6 @@ function handleDefaultImports(defaultAs: string, defaultAsVar: string, defaultIm
   if (defaultAs) {
     return `const ${defaultAsVar.trim()} = require(${source})`;
   } else {
-    return `const ${defaultImport.trim()} = require(${source}).default`;
+    return `const ${defaultImport.trim()} = require(${source}).default || require(${source})`;
   }
 }

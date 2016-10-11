@@ -12,7 +12,7 @@ describe('transform', () => {
 
   it('transforms default imports', () => {
     const imp = "import Foo from 'Bar'";
-    assert.equal(transform(imp), "const Foo = require('Bar').default");
+    assert.equal(transform(imp), "const Foo = require('Bar').default || require('Bar')");
 
     const imp1 = "import * as Foo from 'Bar'";
     assert.equal(transform(imp1), "const Foo = require('Bar')");
@@ -28,7 +28,7 @@ describe('transform', () => {
 
   it('transforms default and named arguments', () => {
     const imp = "import Foo, { Foo1 } from 'Bar'";
-    assert.equal(transform(imp), "const Foo = require('Bar').default\nconst { Foo1 } = require('Bar')");
+    assert.equal(transform(imp), "const Foo = require('Bar').default || require('Bar')\nconst { Foo1 } = require('Bar')");
 
     const imp1 = "import * as Foo { Foo1 } from 'Bar'";
     assert.equal(transform(imp1), "const Foo = require('Bar')\nconst { Foo1 } = require('Bar')");
@@ -63,5 +63,14 @@ describe('transform', () => {
   it('transforms default export variables', () => {
     let imp = `export default m`;
     assert.equal(transform(imp), "m\nexports.default = m;");
+  });
+
+  it('ignores commonjs exports', () => {
+    let imp = `exports = module.exports = debug;
+                exports.coerce = coerce;
+                exports.humanize = require('ms');`;
+    const a = transform(imp);
+    console.log(a)
+    assert.equal(transform(imp), imp);
   });
 });
