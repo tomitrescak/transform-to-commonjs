@@ -1,4 +1,5 @@
-const importReg = /^import\s+((\* as )?\s*([\w_]+)\s*)?,?\s*(\{\s*([\w_,\s]*)\s\})?\s*(from\s+)?(['"][\._\-\w\/]+['"])/gm;
+const stringLiteral = `"[^"\\\\]*(?:\\\\.[^"\\\\]*)*"|'[^\'\\\\]*(?:\\\\.[^\'\\\\]*)*'`;
+const importReg = new RegExp(`^import\\s+((\\* as )?\\s*([\\w_]+)\\s*)?,?\\s*(\\{\\s*([\\w_,\\s]*)\\s\\})?\\s*(from\\s+)?(${stringLiteral})`, 'gm');
 const exportRef = /^export\s+(default)?\s*(const|let|var|class|function|interface)?\s*([\w_]*)/mg;
 
 export default function transform(source: string) {
