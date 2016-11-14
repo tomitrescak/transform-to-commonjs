@@ -6,6 +6,9 @@ describe('transform', () => {
     const imp = "import 'Bar'";
     assert.equal(transform(imp), "require('Bar')");
 
+    const imp = "import 'arbitrary \\' string'";
+    assert.equal(transform(imp), "require('arbitrary \\' string')");
+
     const imp1 = "import * as Foo from 'Bar'";
     assert.equal(transform(imp1), "const Foo = require('Bar')");
   });
